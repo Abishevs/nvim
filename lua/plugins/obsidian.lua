@@ -45,7 +45,7 @@ return {
     workspaces = {
       {
         name = "personal",
-        path = "~/vaults/second-brain",
+        path = "~/.obsidian/second-brain",
       },
     },
 
