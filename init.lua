@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","  -- For vimtex
 vim.opt.smartindent = true
 vim.opt.relativenumber = true
 vim.opt.nu = true
@@ -64,6 +65,16 @@ function insert_python_debug()
     vim.api.nvim_buf_set_lines(0, line + 1, line + 1, false, {debug_statement})
 end
 
+-- C and C++ adjusments
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "c", "cpp" },
+    callback = function()
+        vim.opt_local.tabstop = 4
+        vim.opt_local.shiftwidth = 4
+        vim.opt_local.expandtab = true
+    end,
+})
+
 vim.keymap.set("n", "<leader>dp", insert_debug_statement )
 vim.keymap.set("n", "<leader>pf", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>o", vim.cmd.MarkdownPreview)
@@ -72,8 +83,8 @@ vim.cmd.colorscheme "catppuccin"
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
+
 --
 -- -- next greatest remap ever 
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
-

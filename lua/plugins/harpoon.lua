@@ -10,7 +10,7 @@ return {
     {
       "<leader>a",
       function()
-        require("harpoon"):list():append()
+        require("harpoon"):list():add()
       end,
       desc = "harpoon file",
     },
@@ -23,28 +23,28 @@ return {
       desc = "harpoon quick menu",
     },
     {
-      "<C-h>",
+      "<leader>h",
       function()
         require("harpoon"):list():select(1)
       end,
       desc = "harpoon to file 1",
     },
     {
-      "<C-j>",
+      "<leader>j",
       function()
         require("harpoon"):list():select(2)
       end,
       desc = "harpoon to file 2",
     },
     {
-      "<C-k>",
+      "<leader>k",
       function()
         require("harpoon"):list():select(3)
       end,
       desc = "harpoon to file 3",
     },
     {
-      "<C-l>",
+      "<leader>l",
       function()
         require("harpoon"):list():select(4)
       end,

@@ -56,6 +56,8 @@ return {
 			['<C-Space>'] = cmp.mapping.complete(),
 		}),
 	})
+	    -- Set up ctags
+	    vim.opt.tags = './tags;,tags;'
 	end
 },
 	{'hrsh7th/cmp-nvim-lsp'},
