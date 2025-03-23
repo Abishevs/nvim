@@ -27,7 +27,7 @@ return {
 
 	require('mason').setup({})
 	require('mason-lspconfig').setup({
-		ensure_installed = {'rust_analyzer'},
+		ensure_installed = {'rust_analyzer', 'clangd', 'gopls', 'pyright', 'texlab'},
 		handlers = {
 			lsp_zero.default_setup,
 			lua_ls = function()
@@ -35,6 +35,16 @@ return {
 				require('lspconfig').lua_ls.setup(lua_opts)
 			end,
 		}
+	})
+	require('lspconfig').qmlls.setup({
+		cmd = { "qmlls" },
+		filetypes = { "qml", "qmljs" },
+		root_dir = require('lspconfig.util').root_pattern(".git", ".qmlproject"),
+		single_file_support = true,
+		on_attach = function(client, bufnr)
+			local opts = { buffer = bufnr, remap = false }
+			vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+		end,
 	})
 
 	local cmp = require('cmp')
